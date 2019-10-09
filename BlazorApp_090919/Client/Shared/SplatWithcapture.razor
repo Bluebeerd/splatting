@@ -1,0 +1,13 @@
+﻿<input @attributes="InputAttributes" />
+
+@code {
+    [Parameter(CaptureUnmatchedValues=true)]
+    public Dictionary<string, object>
+    InputAttributes { get; set; } =
+    new Dictionary<string, object>
+        ()
+        {
+        { "maxlength", "10" },
+        { "type", "text" }
+        };
+}

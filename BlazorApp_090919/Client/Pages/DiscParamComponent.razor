@@ -1,0 +1,15 @@
+﻿<h3>DiscParamComponent</h3>
+
+<ul>
+    @for (int line = 0; line < Lines; line++)
+    {
+        <li><span>Title: @Title</span></li>
+    }
+</ul>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter]
+    public int Lines { get; set; } = 1;
+}

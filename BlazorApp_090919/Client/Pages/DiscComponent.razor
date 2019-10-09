@@ -1,0 +1,17 @@
+﻿<h3>DiscComponent</h3>
+
+<ul>
+    @for (int line = 0; line < Lines; line++)
+    {
+        <li><span style="@Styling">Line: @line  @ChildContent</span></li>
+    }
+</ul>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public int Lines { get; set; } = 1;
+    [Parameter]
+    public string Styling { get; set; } = "";
+}

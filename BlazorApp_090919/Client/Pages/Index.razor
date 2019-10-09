@@ -1,0 +1,144 @@
+﻿@page "/"
+@using System.ComponentModel.DataAnnotations;
+
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>
+                    
+                </td>
+                <td>
+                    <b>Tag</b>
+                </td>
+                <td>
+                    <b>[Parameter]InputAttributes</b>
+                </td>
+                <td>
+                    Input here
+                </td>
+                <td>
+                    <b>Html Result</b>
+                </td>
+                <td>
+                    <b>Issues</b>
+                </td>
+            </tr>
+            <tr>
+                <td><b>1</b></td>
+                <td>
+                    &lt;SplatWithcapture /&gt;
+                </td>
+                <td>
+                    CaptureUnmatchedValues=true
+                </td>
+                <td>
+                    <SplatWithcapture />
+                </td>
+                <td>
+                    &lt;input maxlength="10" type="text"&gt;
+                </td>
+                <td>
+                    None
+                </td>
+            </tr>
+            <tr>
+                <td><b>2</b></td>
+                <td>
+                    &lt;SplatNocapture /&gt;
+                </td>
+                <td>
+                </td>
+                <td>
+                    <SplatNocapture />
+                </td>
+                <td>
+                    &lt;input maxlength="10" type="text"&gt;
+                </td>
+                <td>
+                    None
+                </td>
+            </tr>
+            <tr>
+                <td><b>3</b></td>
+                <td>
+                    &lt;SplatWithcapture type="password" /&gt;
+                </td>
+                <td>
+                    CaptureUnmatchedValues=true
+                </td>
+                <td>
+                    <SplatWithcapture type="password" />
+                </td>
+                <td>
+                    &lt;input type="password"&gt;
+                </td>
+                <td>
+                    <b>Missing maxlength="10"</b>
+                </td>
+            </tr>
+            <tr>
+                <td><b>4</b></td>
+                <td>
+                    &lt;SplatNocapture type="password" /&gt;
+                </td>
+                <td>
+                </td>
+                <td>
+                    <b>Rem'ed (to prevent crash)</b>
+                    @*<SplatNocapture type="password" />*@
+                </td>
+                <td>
+                    Expected: &lt;input type="password" maxlength="10" /&gt;
+                </td>
+                <td>
+                    <b>Program Crash!</b>
+                </td>
+            </tr>
+            <tr>
+                <td><b>5</b></td>
+                <td>
+                    &lt;SplatWithcapture /&gt;
+                </td>
+                <td>
+                    CaptureUnmatchedValues=true
+                </td>
+                <td>
+                    <SplatWithcapture size="15" />
+                </td>
+                <td>
+                    &lt;input size="15"&gt;
+                </td>
+                <td>
+                    <b>Missing type="text" and maxLength="10" defaults!</b>
+                </td>
+            </tr>
+            <tr>
+                <td><b>6</b></td>
+                <td>
+                    &lt;SplatNocapture size="50" /&gt;
+                </td>
+                <td>
+                </td>
+                <td>
+                    <b>Rem'ed (to prevent crash)</b>
+                    @*<SplatNocapture size="15" />*@
+                </td>
+                <td>
+                    Expected: &lt;input type="text" maxlength="10" size="15" /&gt;
+                </td>
+                <td>
+                    <b>Program Crash!</b>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+<p>
+    The original problem we encountered was when we tried to use attribute splatting with an override on one of the custom predefined elements. <br>
+    The above 6 cases are the result of us trying different ways to see if the problem could be worked around.
+</p>
+
+
+@code
+{
+}
